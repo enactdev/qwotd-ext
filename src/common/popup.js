@@ -89,11 +89,21 @@ function showPopupProperies() {
     props += 'document.body.offsetHeight=' + document.body.offsetHeight + '\n';
     $('#popup-properies').val(props);
 }
+if (typeof jQuery != 'undefined') {
+ 
+    alert("jQuery library is loaded!");
+ 
+}else{
+ 
+    alert("jQuery library is not found!");
+ 
+}
 
-KangoAPI.onReady(function() {
+
+$(KangoAPI).ready(function() {
     $('#ready').show();
     $('#not-ready').hide();
-
+    alert("Whats up dog");
     showPopupProperies();
 
     $('#form').submit(function() {
