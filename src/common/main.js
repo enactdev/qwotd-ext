@@ -28,6 +28,8 @@
       }
     });
 
+    self.current_tab_url = tab.getUrl();
+
     self.refresh();
 
   });
