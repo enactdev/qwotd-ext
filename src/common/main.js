@@ -92,7 +92,6 @@ QwotdExtension.prototype = {
   }, // End refresh function
 
   _onCommand: function() {
-    kango.console.log("Hey there!!!");
     kango.ui.browserButton.setPopup({url:'popup.html', width: 600, height:520});
   }
 

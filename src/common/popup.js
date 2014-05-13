@@ -60,7 +60,7 @@ var XhrTest = {
 var WindowTest = {
     
     close: function() {
-        KangoAPI.closeWindow()
+        KangoAPI.closeWindow();
     },
     
     resize: function() {
@@ -89,21 +89,11 @@ function showPopupProperies() {
     props += 'document.body.offsetHeight=' + document.body.offsetHeight + '\n';
     $('#popup-properies').val(props);
 }
-if (typeof jQuery != 'undefined') {
- 
-    alert("jQuery library is loaded!");
- 
-}else{
- 
-    alert("jQuery library is not found!");
- 
-}
 
+KangoAPI.resizeWindow(600,600);
 
 $(KangoAPI).ready(function() {
-    $('#ready').show();
-    $('#not-ready').hide();
-    alert("Whats up dog");
+    KangoAPI.resizeWindow(600,600);
     showPopupProperies();
 
     $('#form').submit(function() {

@@ -5,36 +5,34 @@
     <script src="jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="kango_api.js"></script>
     <script type="text/javascript" src="popup.js"></script>
+    <script type="text/css" src="popup.css"></script>
 </head>
 <body>
-    <h1>Kango WebAPI <span id="not-ready" style="color:red;display:inline;">not ready</span><span id="ready" style="color:green;display:none;">ready</span></h1>
-
-    <fieldset>
-        <legend>Popup</legend>
-        <textarea id="popup-properies" rows="4" cols="60"></textarea><br/>
-        <input id="popup-close" type="submit" value="Close"/>
-        <input id="popup-resize" type="submit" value="Resize"/>
+    <h1><img src="qwotd_logo copy.png" width="100%" height="100%"></h1>
+<fieldset>
+        <legend rows="4" cols="60">Popup</legend>
     </fieldset>
 
     <fieldset>
         <legend>Storage</legend>
         <label>Key</label>
-        <input id="storage-key" type="text" value="TestKey"/><br/>
-        <label>Value</label>
-        <input id="storage-value" type="text" value=""/><br/>
-        <input id="storage-get" type="submit" value="Get"/>
-        <input id="storage-set" type="submit" value="Set"/>
-        <input id="storage-remove" type="submit" value="Remove"/>
-        <input id="storage-keys" type="submit" value="Keys"/>
     </fieldset>
 
     <fieldset>
         <legend>XHR</legend>
-        <label>Url</label>
-        <input id="xhr-url" type="text" value="http://api.openweathermap.org/data/2.5/weather?q=London,uk" size="64"/>
-        <input id="xhr-get" type="submit" value="Get"/><br/>
-        <label>Result</label><br/>
         <textarea rows="4" cols="60" id="xhr-result"></textarea><br/>
     </fieldset>
+    <p>Number of tweets about this article:</p>
+
+    <p>Top three retweets about this article:</p>
+
+    <p>Top three quotes from this article:</p>
+
+    <p>Top three tweets that started conversations:</p>
+
+    <p>Top three favorited tweets:</p>
+
+    <button id="popup-close">Close</button>
+
 </body>
 </html>
