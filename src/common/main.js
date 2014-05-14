@@ -27,12 +27,13 @@
       if(!(tab.getUrl().indexOf("chrome")>=0)){
         urlArrays.push(tab.getUrl());
         kango.console.log(urlArrays);
-      }
+      }   
+      self.current_tab_url = tab.getUrl();
+
+      self.refresh();
     });
 
-    self.current_tab_url = tab.getUrl();
 
-    self.refresh();
 
   });
 
@@ -86,12 +87,14 @@ QwotdExtension.prototype = {
     kango.xhr.send(details, function(data) {
       var info = data.response;
 
+      kango.info = info;
+
       kango.console.log("Updating tab: ");
 
       //kango.console.log(self.current_tab_url);
       kango.console.log(info.url);
 
-      self._setUnreadCount(info.count);
+      self._setUnreadCount(kango.info.count);
 
     });
   }, // End refresh function

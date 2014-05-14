@@ -90,10 +90,15 @@ function showPopupProperies() {
     $('#popup-properies').val(props);
 }
 
-KangoAPI.resizeWindow(600,600);
-
-$(KangoAPI).ready(function() {
+//KangoAPI.resizeWindow(600,600);
+alert("hi");
+KangoAPI.onReady(function() {
+    alert("hello");
+    kango.storage.setItem('height', 176);
+    var storedHeight = kango.storage.getItem('height');
+    alert('stored height is ' + storedHeight );
     KangoAPI.resizeWindow(600,600);
+
     showPopupProperies();
 
     $('#form').submit(function() {
