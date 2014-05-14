@@ -16,6 +16,8 @@
 
   kango.browser.addEventListener(kango.browser.event.DOCUMENT_COMPLETE, function(){
 
+    self._setUnreadCount('#');
+
     var length = urlArrays.length;
 
     // output current tab url to console
@@ -36,6 +38,8 @@
 
   
   kango.browser.addEventListener(kango.browser.event.TAB_CHANGED,function() {
+
+    self._setUnreadCount('@');
 
     kango.console.log("The tab has changed.");
 
@@ -65,6 +69,7 @@ QwotdExtension.prototype = {
     kango.ui.browserButton.setTooltipText(kango.i18n.getMessage('Unread count') + ': ' + count);
     kango.ui.browserButton.setIcon('icons/button.png');
     kango.ui.browserButton.setBadgeValue(count);
+    kango.console.log("Set count to " + count);
   },
 
   refresh: function() {
