@@ -2,35 +2,56 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-    <script src="jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="kango_api.js"></script>
-    <script type="text/javascript" src="popup.js"></script>
-    <script type="text/css" src="popup.css"></script>
-</head>
-<body>
-    <h1><img src="qwotd_logo_copy.png" width="30%" height="30%"></h1>
-<fieldset>
-        <legend rows="4" cols="60">Popup</legend>
-    </fieldset>
 
-    <fieldset>
-        <legend>Storage</legend>
-        <label>Key</label>
-    </fieldset>
+    <script type="text/javascript" src="kango-ui/kango_api.js"></script>
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
+
+
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <script type="text/css" src="popup.css"></script>
+
+<body>
+
+    <h1><img src="qwotd_logo_copy.png" width="30%" height="30%"></h1>
 
     <fieldset>
         <legend>XHR</legend>
         <textarea rows="4" cols="60" id="xhr-result"></textarea><br/>
     </fieldset>
-    <p>Number of tweets about this article:</p>
 
-    <p>Top three retweets about this article:</p>
+    <p>Number of tweets about this article: <div id="num_tweets"></div></p>
 
-    <p>Top three quotes from this article:</p>
+    <p><b>Top retweet:</b></p>
 
-    <p>Top three tweets that started conversations:</p>
+<div id="retweet_0"></div>
 
-    <p>Top three favorited tweets:</p>
+<div id="retweet_1"></div>
+
+<div id="retweet_2"></div>
+
+    <p><b>Top favorited:</b></p>
+
+<div id="favorited_0"></div>
+
+<div id="favorited_1"></div>
+
+<div id="favorited_2"></div>
+
+
+    <p><b>Top replied to:</b></p>
+
+<div id="replied_to_0"></div>
+
+<div id="replied_to_1"></div>
+
+<div id="replied_to_2"></div>
+
+
+    <p><b>Top quotes from this article:</b></p>
+
+<div id="top_quotes"></div>
 
     <button id="popup-close">Close</button>
 

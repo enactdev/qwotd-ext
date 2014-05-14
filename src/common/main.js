@@ -7,10 +7,11 @@
 
   var current_tab_url = '';
 
-  self.refresh();
+  //self.refresh();
 
   kango.ui.browserButton.addEventListener(kango.ui.browserButton.event.COMMAND, function() {
-    self._onCommand();
+    //self._onCommand();
+    kango.ui.browserButton.setPopup({url:'popup.html', width: 600, height:520});
   });
 
 
@@ -63,7 +64,7 @@
 
 QwotdExtension.prototype = {
 
-  _refreshTimeout: 60*1000*8,    // 8 minutes
+  _refreshTimeout: 60*1000*20,    // 20 minutes
   _feedUrl: 'http://alpha.qwotd.com/api/details/?url=google.com',
 
   _setUnreadCount: function(count) {
@@ -87,21 +88,27 @@ QwotdExtension.prototype = {
     kango.xhr.send(details, function(data) {
       var info = data.response;
 
-      kango.info = info;
+      kango.tab_details = info;
 
-      kango.console.log("Updating tab: ");
+      kango.console.log("Updating tab data: ");
 
       //kango.console.log(self.current_tab_url);
-      kango.console.log(info.url);
+      //kango.console.log(kango.tab_details.url);
 
-      self._setUnreadCount(kango.info.count);
+      kango.console.log(kango.tab_details);
+
+      self._setUnreadCount(kango.tab_details.count);
 
     });
   }, // End refresh function
 
+  /* 
+   * Just moved this to the only place it was being called, up top
+   * 
   _onCommand: function() {
     kango.ui.browserButton.setPopup({url:'popup.html', width: 600, height:520});
   }
+  */
 
 }
 

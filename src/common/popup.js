@@ -91,13 +91,80 @@ function showPopupProperies() {
 }
 
 //KangoAPI.resizeWindow(600,600);
-alert("hi");
+
+//alert("hi");
+
 KangoAPI.onReady(function() {
-    alert("hello");
-    kango.storage.setItem('height', 176);
-    var storedHeight = kango.storage.getItem('height');
-    alert('stored height is ' + storedHeight );
-    KangoAPI.resizeWindow(600,600);
+
+    //alert("hello");
+
+    //kango.storage.setItem('height', 176);
+
+    //var storedHeight = kango.storage.getItem('height');
+
+    //alert('count ' + kango.tab_details.count );
+
+    //alert( 'length ' + kango.tab_details.top_retweets.length );
+
+    $('#num_tweets').html(kango.tab_details.count);
+
+    //alert('top retweet: ' + kango.tab_details.top_favorited[0].twitter_msg_id );
+
+    if ( kango.tab_details.top_retweets.length >= 1 ) {
+      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_retweets[0].twitter_msg_id+"&omit_script=true", function(data){$('#retweet_0').html(data.html);});
+    }
+
+    if ( kango.tab_details.top_retweets.length >= 2 ) {
+      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_retweets[1].twitter_msg_id+"&omit_script=true", function(data){$('#retweet_1').html(data.html);});
+    }
+
+    if ( kango.tab_details.top_retweets.length >= 3 ) {
+      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_retweets[2].twitter_msg_id+"&omit_script=true", function(data){$('#retweet_2').html(data.html);});
+    }
+
+
+
+    if ( kango.tab_details.top_favorited.length >= 1 ) {
+      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_favorited[0].twitter_msg_id+"&omit_script=true", function(data){$('#favorited_0').html(data.html);});
+    }
+
+    if ( kango.tab_details.top_favorited.length >= 2 ) {
+      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_favorited[1].twitter_msg_id+"&omit_script=true", function(data){$('#favorited_1').html(data.html);});
+    }
+
+    if ( kango.tab_details.top_favorited.length >= 3 ) {
+      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_favorited[2].twitter_msg_id+"&omit_script=true", function(data){$('#favorited_2').html(data.html);});
+    }
+
+
+
+    if ( kango.tab_details.top_replied_to.length >= 1 ) {
+      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_replied_to[0].in_reply_to_status_id+"&omit_script=true", function(data){$('#replied_to_0').html(data.html);});
+    }
+
+    if ( kango.tab_details.top_replied_to.length >= 2 ) {
+      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_replied_to[1].in_reply_to_status_id+"&omit_script=true", function(data){$('#replied_to_1').html(data.html);});
+    }
+
+    if ( kango.tab_details.top_replied_to.length >= 3 ) {
+      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_replied_to[2].in_reply_to_status_id+"&omit_script=true", function(data){$('#replied_to_2').html(data.html);});
+    }
+
+
+
+
+    var top_q = [];
+
+  $.each( kango.tab_details.quotes, function( key, val ) {
+    top_q.push( "<li id='top_q_" + key + "'>" + val.quoted_count + " => " + val.quoted_text + "</li>" );
+  });
+
+    //alert(top_q.join( "" ))
+
+/***/
+    $('#top_quotes').html("<ul>"+top_q.join( "" )+"</ul>");
+/***/
+    //alert('top quote: ' + kango.tab_details.quotes[0].quoted_text );
 
     showPopupProperies();
 

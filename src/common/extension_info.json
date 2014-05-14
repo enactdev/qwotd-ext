@@ -1,23 +1,33 @@
 {
-    "content_scripts": [
-		"content.js"
-	], 
+    "name": "Qwotd",
+    "version": "0.9.0", 
     "description": "Social annotation of web articles", 
-    "creator": "Kango", 
+    "creator": "Qwotd Team",
+    "homepage_url": "http://qwotd.com/",
+
+    "content_scripts": [
+        "content.js"
+    ], 
+
     "background_scripts": [
         "main.js",
-	"background.js",
-	"jquery.min.js"
+        "background.js",
+        "jquery-1.11.1.min.js"
     ], 
-    "homepage_url": "http://kangoextensions.com/", 
-    "version": "0.9.0", 
+
     "browser_button": {
-        "caption": "Kango", 
+        "tooltipText": "Qwotd",
+        "caption": "Qwotd", 
         "icon": "icons/button.png", 
-        "tooltipText": "Kango"
+        "popup": {
+            "url": "popup.html",
+            "width": 600,
+            "height": 600
+        }
     },
-    "browser_action":{
-	"default_popup": "popup.html"
-    }, 
-    "name": "Qwotd"
+
+    "browser_action": {
+        "default_popup": "popup.html"
+    }
+
 }
