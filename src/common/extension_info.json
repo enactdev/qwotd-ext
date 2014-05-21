@@ -10,10 +10,7 @@
     ], 
 
     "background_scripts": [
-        "main.js",
-        "background.js",
-        "jquery-1.11.1.min.js",
-        "jquery.highlight.js"
+        "main.js"
     ], 
 
     "browser_button": {

@@ -6,7 +6,7 @@
 // @require jquery.highlight.js
 // ==/UserScript==
 
-alert('content.js loaded');
+//alert('content.js loaded');
 
 var $ = window.$.noConflict(true); // Required for Opera and IE
 
@@ -16,17 +16,21 @@ var $ = window.$.noConflict(true); // Required for Opera and IE
 kango.addMessageListener('Quotes', function(event) {
     // event.data - the data sent with message
 
-  alert('Background script says: '+event.data);
+  //alert('Background script says: '+event.data);
 
   $.each( event.data, function( key,val ) {
-    alert(key + ": " + JSON.stringify(val.quoted_text));
-    $("body").highlight(val.quoted_text);
+    //alert(key + ": " + val.quoted_text);
     $(".highlight").css({ backgroundColor: "#FFFF88"});
-    alert( "highlighted : " + key + ": " + JSON.stringify(val.quoted_text));
 
-    
+    //alert('body highlight added 2');
+
+    $("body").highlight(val.quoted_text);
+    //$("p").highlight('the');
+
+    //alert( "highlighted : " + key + ": " + val.quoted_text);
+
   });
 
 });
 
-alert('end content.js')
+//alert('end content.js')
