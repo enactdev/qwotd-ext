@@ -15,7 +15,7 @@
   });
 
 
-  kango.browser.addEventListener(kango.browser.event.DOCUMENT_COMPLETE, function(){
+  kango.browser.addEventListener(kango.browser.event.DOCUMENT_COMPLETE, function(event){
 
     self._setUnreadCount('#');
 
@@ -32,6 +32,16 @@
       self.current_tab_url = tab.getUrl();
 
       self.refresh();
+
+/*
+      var data = {
+          quotes: kango.tab_details.quotes
+};
+*/
+
+      event.target.dispatchMessage('Quotes',kango.tab_details.quotes);
+
+
     });
 
 
@@ -39,7 +49,7 @@
   });
 
   
-  kango.browser.addEventListener(kango.browser.event.TAB_CHANGED,function() {
+  kango.browser.addEventListener(kango.browser.event.TAB_CHANGED,function(event) {
 
     self._setUnreadCount('@');
 
@@ -54,6 +64,11 @@
       kango.console.log(self.current_tab_url);
 
       self.refresh();
+      var data = {
+          quotes: kango.tab_details.quotes
+};
+
+      event.target.dispatchMessage('Quotes',data);
 
     });
   
@@ -85,7 +100,9 @@ QwotdExtension.prototype = {
 
     var self = this;
 
-    kango.xhr.send(details, function(data) {
+    
+
+    kango.xhr.send(details, function(data) {    
       var info = data.response;
 
       kango.tab_details = info;
@@ -99,7 +116,11 @@ QwotdExtension.prototype = {
 
       self._setUnreadCount(kango.tab_details.count);
 
+
+
     });
+
+
   }, // End refresh function
 
   /* 

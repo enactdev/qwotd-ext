@@ -1,6 +1,6 @@
 {
     "name": "Qwotd",
-    "version": "0.9.0", 
+    "version": "0.9.1", 
     "description": "Social annotation of web articles", 
     "creator": "Qwotd Team",
     "homepage_url": "http://qwotd.com/",
@@ -12,7 +12,8 @@
     "background_scripts": [
         "main.js",
         "background.js",
-        "jquery-1.11.1.min.js"
+        "jquery-1.11.1.min.js",
+        "jquery.highlight.js"
     ], 
 
     "browser_button": {
