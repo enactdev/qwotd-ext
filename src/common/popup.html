@@ -2,35 +2,159 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-
+    <script type="text/css" rel='stylesheet' src="popup.css"></script>
     <script type="text/javascript" src="kango-ui/kango_api.js"></script>
     <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="popup.js"></script>
 
-
-    <script type="text/css" src="popup.css"></script>
-
     <script type="text/css" src="twitter.css"></script>
-
-<body>
+</head>
+<body style="background-image: url('satinweave.png'); background-repeat:repeat; font-family: Helvetica, sans-serif">
 
     <h1><img src="qwotd_logo_copy.png" width="30%" height="30%"></h1>
 
-    <fieldset>
-        <legend>XHR</legend>
-        <textarea rows="4" cols="60" id="xhr-result"></textarea><br/>
+    <fieldset style="display:none;">
+        <legend style="display:none;">XHR</legend>
+        <textarea style="display:none;" rows="4" cols="60" id="xhr-result"></textarea><br/>
     </fieldset>
-
-    <p>Number of tweets about this article: <div id="num_tweets"></div></p>
+    <p> <div id="num_tweets"></div> tweets about this article</p>
 
     <p><b>Most popular:</b></p>
+<div style="overflow: auto; width:300px; height:200px;">
+    <div id="popular_0" style="display: inline-block;
+      padding: 2px;
+      margin: 2px 0;
+      max-width: 468px;
+     
+      border: #ddd 1px solid;
+      border-top-color: #eee;
+      border-bottom-color: #bbb;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+     
+      font: bold 14px/18px Helvetica, Arial, sans-serif;
+      color: #000;"></div>
 
-<div id="popular_0"></div>
+    <div id="popular_1" style="display: inline-block;
+      padding: 16px;
+      margin: 10px 0;
+      max-width: 468px;
+     
+      border: #ddd 1px solid;
+      border-top-color: #eee;
+      border-bottom-color: #bbb;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+     
+      font: bold 14px/18px Helvetica, Arial, sans-serif;
+      color: #000;"></div>
 
-<div id="popular_1"></div>
+    <div id="popular_2" style="display: inline-block;
+      padding: 16px;
+      margin: 10px 0;
+      max-width: 468px;
+     
+      border: #ddd 1px solid;
+      border-top-color: #eee;
+      border-bottom-color: #bbb;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+     
+      font: bold 14px/18px Helvetica, Arial, sans-serif;
+      color: #000;"></div>
+    <div id="popular_3" style="display: inline-block;
+      padding: 16px;
+      margin: 10px 0;
+      max-width: 468px;
+     
+      border: #ddd 1px solid;
+      border-top-color: #eee;
+      border-bottom-color: #bbb;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+     
+      font: bold 14px/18px Helvetica, Arial, sans-serif;
+      color: #000;"></div>
+    <div id="popular_4" style="display: inline-block;
+      padding: 16px;
+      margin: 10px 0;
+      max-width: 468px;
+     
+      border: #ddd 1px solid;
+      border-top-color: #eee;
+      border-bottom-color: #bbb;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+     
+      font: bold 14px/18px Helvetica, Arial, sans-serif;
+      color: #000;"></div>
+    <div id="popular_5" style="display: inline-block;
+      padding: 16px;
+      margin: 10px 0;
+      max-width: 468px;
+     
+      border: #ddd 1px solid;
+      border-top-color: #eee;
+      border-bottom-color: #bbb;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+     
+      font: bold 14px/18px Helvetica, Arial, sans-serif;
+      color: #000;"></div>
+    <div id="popular_6" style="display: inline-block;
+      padding: 16px;
+      margin: 10px 0;
+      max-width: 468px;
+     
+      border: #ddd 1px solid;
+      border-top-color: #eee;
+      border-bottom-color: #bbb;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+     
+      font: bold 14px/18px Helvetica, Arial, sans-serif;
+      color: #000;"></div>
+    <div id="popular_7" style="display: inline-block;
+      padding: 16px;
+      margin: 10px 0;
+      max-width: 468px;
+     
+      border: #ddd 1px solid;
+      border-top-color: #eee;
+      border-bottom-color: #bbb;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+     
+      font: bold 14px/18px Helvetica, Arial, sans-serif;
+      color: #000;"></div>
+    <div id="popular_8" style="display: inline-block;
+      padding: 16px;
+      margin: 10px 0;
+      max-width: 468px;
+     
+      border: #ddd 1px solid;
+      border-top-color: #eee;
+      border-bottom-color: #bbb;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+     
+      font: bold 14px/18px Helvetica, Arial, sans-serif;
+      color: #000;"></div>
+    <div id="popular_9" style="display: inline-block;
+      padding: 16px;
+      margin: 10px 0;
+      max-width: 468px;
+     
+      border: #ddd 1px solid;
+      border-top-color: #eee;
+      border-bottom-color: #bbb;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+     
+      font: bold 14px/18px Helvetica, Arial, sans-serif;
+      color: #000;"></div>
 
-<div id="popular_2"></div>
-
+</div>
 <!--
     <p><b>Top replied to:</b></p>
 
@@ -43,10 +167,9 @@
 
     <p><b>Top quotes from this article:</b></p>
 
-<div id="top_quotes"></div>
+<div id="top_quotes" style="overflow: auto; width:300px; height:200px;"></div>
 
     <button id="popup-close">Close</button>
-
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 </body>

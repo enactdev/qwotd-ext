@@ -124,7 +124,17 @@ KangoAPI.onReady(function() {
     }
 ************/
 
+//loop through all of these
+var i;
 
+$.each( kango.tab_details.top_popular, function( index, val ) {
+$.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+val.twitter_msg_id+"&omit_script=true", function(data){$('#popular_'+index).html(data.html);});
+});
+
+/*for(i=0; i<kango.tab_details.top_popular.length; i++){
+  $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_popular[i].twitter_msg_id+"&omit_script=true", function(data){$('#popular_'+i).html(data.html);});
+}/*
+/*
     if ( kango.tab_details.top_popular.length >= 1 ) {
       $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_popular[0].twitter_msg_id+"&omit_script=true", function(data){$('#popular_0').html(data.html);});
     }
@@ -135,7 +145,7 @@ KangoAPI.onReady(function() {
 
     if ( kango.tab_details.top_popular.length >= 3 ) {
       $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_popular[2].twitter_msg_id+"&omit_script=true", function(data){$('#popular_2').html(data.html);});
-    }
+    }*/
 
 
 /************

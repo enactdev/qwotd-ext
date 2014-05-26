@@ -2,3 +2,20 @@ body{
 	width:500px;
 	height:500px;
 }
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('Droid Sans.woff') format('woff');
+}
+
+#popular_0{
+
+  font-family: 'Droid Sans';
+  font-weight:300;
+}
+
+html{
+  background-image:url("satinweave.png");
+}
