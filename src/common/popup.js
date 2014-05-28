@@ -78,6 +78,7 @@ var WindowTest = {
     }
 };
 
+/*
 function showPopupProperies() {
     var props = 'window.outerWidth=' + window.outerWidth + '\n';
     props += 'window.outerHeight=' + window.outerHeight + '\n';
@@ -89,108 +90,111 @@ function showPopupProperies() {
     props += 'document.body.offsetHeight=' + document.body.offsetHeight + '\n';
     $('#popup-properies').val(props);
 }
+*/
 
 //KangoAPI.resizeWindow(600,600);
 
-//alert("hi");
 
 KangoAPI.onReady(function() {
 
-    //alert("hello");
+  $('#num_tweets').html(kango.tab_details.count);
+  $('#num_hashtags').html(kango.tab_details.top_hashtags.length);
+  $('#num_mentions').html(kango.tab_details.top_mentions.length);
+  $('#num_quotes').html(kango.tab_details.quotes.length);
+  $('#num_top_tweets').html(kango.tab_details.top_popular.length);
 
-    //kango.storage.setItem('height', 176);
+  //alert('top retweet: ' + kango.tab_details.top_favorited[0].twitter_msg_id );
 
-    //var storedHeight = kango.storage.getItem('height');
+  //loop through popular tweets
+  $.each( kango.tab_details.top_popular, function( index, val ) {
 
-    //alert('count ' + kango.tab_details.count );
+    // Append a div that will display the tweet
+    $( "#top_tweets" ).append( '<div id="tweet_'+index+'"></div>' );
 
-    //alert( 'length ' + kango.tab_details.top_retweets.length );
+    $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+val.twitter_msg_id+"&omit_script=true", function(data){$('#tweet_'+index).html(data.html);});
 
-    $('#num_tweets').html(kango.tab_details.count);
+  });
 
-    //alert('top retweet: ' + kango.tab_details.top_favorited[0].twitter_msg_id );
+  // Display top hashtags
+  var c = 0;
+  var lim = Math.ceil(kango.tab_details.top_hashtags[0].num_messages / 50)
+  var top_q = [];
 
-/************
-    if ( kango.tab_details.top_retweets.length >= 1 ) {
-      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_retweets[0].twitter_msg_id+"&omit_script=true", function(data){$('#retweet_0').html(data.html);});
-    }
+  //alert( lim );
 
-    if ( kango.tab_details.top_retweets.length >= 2 ) {
-      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_retweets[1].twitter_msg_id+"&omit_script=true", function(data){$('#retweet_1').html(data.html);});
-    }
+  //alert(kango.tab_details.top_hashtags);
 
-    if ( kango.tab_details.top_retweets.length >= 3 ) {
-      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_retweets[2].twitter_msg_id+"&omit_script=true", function(data){$('#retweet_2').html(data.html);});
-    }
-************/
+  $.each( kango.tab_details.top_hashtags, function( key, val ) {
 
-//loop through all of these
-var i;
+    if (val.num_messages < lim) {return false;}
 
-$.each( kango.tab_details.top_popular, function( index, val ) {
-$.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+val.twitter_msg_id+"&omit_script=true", function(data){$('#popular_'+index).html(data.html);});
-});
+    c++;
 
-/*for(i=0; i<kango.tab_details.top_popular.length; i++){
-  $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_popular[i].twitter_msg_id+"&omit_script=true", function(data){$('#popular_'+i).html(data.html);});
-}/*
-/*
-    if ( kango.tab_details.top_popular.length >= 1 ) {
-      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_popular[0].twitter_msg_id+"&omit_script=true", function(data){$('#popular_0').html(data.html);});
-    }
-
-    if ( kango.tab_details.top_popular.length >= 2 ) {
-      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_popular[1].twitter_msg_id+"&omit_script=true", function(data){$('#popular_1').html(data.html);});
-    }
-
-    if ( kango.tab_details.top_popular.length >= 3 ) {
-      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_popular[2].twitter_msg_id+"&omit_script=true", function(data){$('#popular_2').html(data.html);});
-    }*/
+    //alert( 'adding hashtag: ' + val.hashtag );
+    //top_q.push( "<li id='top_h_" + key + "'>" + val.num_messages + " => " + val.hashtag + "</li>" );
+    top_q.push( "<tr><td>" + val.num_messages + "</td><td> uses of #" + val.hashtag + "</td></tr>" );
+  });
+  $('#top_hashtags').html("<table>"+top_q.join( "" )+"</table>");
+  $('#num_displayed_hashtags').html(c);
+  $('#num_ceil_hashtags').html(lim);
 
 
-/************
-    if ( kango.tab_details.top_replied_to.length >= 1 ) {
-      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_replied_to[0].in_reply_to_status_id+"&omit_script=true", function(data){$('#replied_to_0').html(data.html);});
-    }
+  // Display top mentions
+  var c = 0;
+  var lim = Math.ceil(kango.tab_details.top_mentions[0].num_messages / 50)
+  var top_q = [];
 
-    if ( kango.tab_details.top_replied_to.length >= 2 ) {
-      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_replied_to[1].in_reply_to_status_id+"&omit_script=true", function(data){$('#replied_to_1').html(data.html);});
-    }
+  $.each( kango.tab_details.top_mentions, function( key, val ) {
 
-    if ( kango.tab_details.top_replied_to.length >= 3 ) {
-      $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?id="+kango.tab_details.top_replied_to[2].in_reply_to_status_id+"&omit_script=true", function(data){$('#replied_to_2').html(data.html);});
-    }
-************/
+    if (val.num_messages < lim) {return false;}
 
+    c++;
 
+    top_q.push( "<tr><td>" + val.num_messages + "</td><td> mentions of @" + val.username + "</td></tr>" );
+  });
+  $('#top_mentions').html("<table>"+top_q.join( "" )+"</table>");
+  $('#num_displayed_mentions').html(c);
+  $('#num_ceil_mentions').html(lim);
 
-    var top_q = [];
+  // Display top qoutes
+  var c = 0;
+  var lim = Math.ceil(kango.tab_details.quotes[0].quoted_count / 10)
+  var top_q = [];
 
   $.each( kango.tab_details.quotes, function( key, val ) {
-    top_q.push( "<li id='top_q_" + key + "'>" + val.quoted_count + " => " + val.quoted_text + "</li>" );
+
+    if (val.quoted_count < lim) {return false;}
+
+    c++;
+
+    top_q.push( "<li>" + val.quoted_count + ' instances of <b>"' + val.quoted_text + '"</b></li>' );
+    //top_q.push( '<tr class="quotes_table"><td>' + val.quoted_count + '</td><td> instances of "' + val.quoted_text + '"</td></tr>' );
   });
 
     //alert(top_q.join( "" ))
 
-/***/
-    $('#top_quotes').html("<ul>"+top_q.join( "" )+"</ul>");
-/***/
-    //alert('top quote: ' + kango.tab_details.quotes[0].quoted_text );
+  $('#top_quotes').html('<ul>'+top_q.join( "" )+"</ul>");
+  $('#num_displayed_quotes').html(c);
+  $('#num_ceil_quotes').html(lim);
 
-    showPopupProperies();
 
-    $('#form').submit(function() {
-        return false;
-    });
+  //showPopupProperies();
 
-    $('#popup-close').click(function(event) {
-        WindowTest.close();
-    });
+  $('#form').submit(function() {
+    return false;
+  });
+
+  $('#popup-close').click(function(event) {
+    WindowTest.close();
+  });
     
-    $('#popup-resize').click(function(event) {
-        WindowTest.resize();
-    });
+  $('#popup-resize').click(function(event) {
+    WindowTest.resize();
+  });
 
-    XhrTest.init();
-    StorageTest.init();
+  XhrTest.init();
+  StorageTest.init();
+
+  //alert('end Kango on ready');
+
 });

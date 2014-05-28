@@ -10,12 +10,23 @@ body{
   src: url('Droid Sans.woff') format('woff');
 }
 
+/*
 #popular_0{
 
   font-family: 'Droid Sans';
   font-weight:300;
 }
+*/
 
 html{
   background-image:url("satinweave.png");
 }
+
+
+tr.quotes > td
+{
+  vertical-align:text-top;
+  padding-bottom: 2em;
+  padding-top: 3em;
+}
+
